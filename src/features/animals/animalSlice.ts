@@ -17,13 +17,6 @@ export interface IAnimalSliceState {
     selectedSubBreedList: string[];
     isLoadingList: boolean,
 }
-
-// const initialState: IWebConfig = {
-//   fontSize: 15,
-//   theme: 'light',
-//   status: 'idle',
-// };
-
 const initialState: IAnimalSliceState = {
     list: [],
     breedList: [],
