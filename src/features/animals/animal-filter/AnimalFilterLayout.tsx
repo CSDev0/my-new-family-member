@@ -52,23 +52,23 @@ export default function AnimalFilterLayout() {
     return (
         <>
             <Grid container spacing={2} mt={20} alignItems="stretch" >
-                <Grid item xs={12} sm={6} md={4} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={5}>
                     <AnimalFilterComponent {...{
                         label: 'Breed', handleOnChange: handleOnChangeBreed, handleOnDelete: handleOnDeleteBreed,
                         elements: breedList, currentValues: selectedBreedList
                     }} />
                 </Grid>
-                <Grid item xs={12} sm={6} md={4} lg={4}>
+                <Grid item xs={12} sm={6} md={6} lg={4}>
                     <AnimalFilterComponent {...{
                         label: 'Sub-breed', handleOnChange: handleOnChangeSubBreed, handleOnDelete: handleOnDeleteSubBreed,
                         elements: subBreedList, currentValues: selectedSubBreedList
                     }} />
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4} lg={2} justifyContent="start" display="flex">
+                <Grid item xs={12} sm={6} md={6} lg={2} justifyContent="start" display="flex">
                     <Button size='large' color="secondary" fullWidth variant='contained' onClick={() => applyFilters()}>Apply filters</Button>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4} lg={1} justifyContent="start" display="flex">
+                <Grid item xs={12} sm={6} md={6} lg={1} justifyContent="start" display="flex">
                     <Button size='large' color="primary" fullWidth variant='outlined' onClick={() => resetFilters()}><RestartAltIcon /></Button>
                 </Grid>
             </Grid>

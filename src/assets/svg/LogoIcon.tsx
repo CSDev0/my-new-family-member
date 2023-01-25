@@ -4,9 +4,9 @@ export default function LogoIcon(props: { size: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
     const { size } = props;
 
     const sizeMap = {
-        xs: 25,
-        sm: 32,
-        md: 40,
+        xs: 40,
+        sm: 60,
+        md: 80,
         lg: 100,
         xl: 150,
         xxl: 200,

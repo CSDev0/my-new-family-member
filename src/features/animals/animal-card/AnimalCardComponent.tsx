@@ -13,7 +13,7 @@ export default function AnimalCardComponent({ animal }: IAnimalCardProps) {
         <div>
             {/* {JSON.stringify(animalList[0])} */}
             {animal &&
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 400 }}>
                     <CardMedia sx={{ height: 300, overflow: 'hidden' }}>
                         <Grid container justifyContent="center">
                             <LazyLoadImage
