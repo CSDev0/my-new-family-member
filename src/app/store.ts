@@ -1,6 +1,6 @@
 import animalReducer from '@features/animals/animalSlice';
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import webConfigReducer from '../features/Header/WebConfigSlice';
+import webConfigReducer from '../features/web-config/webConfigSlice';
 
 export const store = configureStore({
   reducer: {

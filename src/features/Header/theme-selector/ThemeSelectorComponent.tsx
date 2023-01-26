@@ -1,5 +1,5 @@
 import { FormControlLabel, Switch, FormGroup } from '@mui/material'
-import { themeTypes } from '../WebConfigSlice';
+import { themeTypes } from '../../web-config/webConfigSlice';
 
 export interface IThemeSelectorComponentProps {
     onToggleTheme: () => any;

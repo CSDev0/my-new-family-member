@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '@app/hooks';
 import HeaderComponent from './HeaderComponent'
 import { RootState } from '@app/store';
-import { decrementFontSize, incrementFontSize, setFontSize, toggleTheme } from './WebConfigSlice';
+import { decrementFontSize, incrementFontSize, setFontSize, toggleTheme } from '../web-config/webConfigSlice';
 import { useLocation } from 'react-router-dom';
 
 
@@ -10,7 +10,8 @@ export default function HeaderLayout() {
 
     const location = useLocation();
     const dispatch = useAppDispatch();
-    const fontSize = useAppSelector((state: RootState) => state.webConfig.fontSize)
+    const fontSize = useAppSelector((state: RootState) => state.webConfig.fontSize);
+    
     const onIncrementFontSize = () => dispatch(incrementFontSize());
     const onDecrementFontSize = () => dispatch(decrementFontSize());
     const setDefaultFontSize = () => dispatch(setFontSize(15));

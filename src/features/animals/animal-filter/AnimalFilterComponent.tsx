@@ -1,56 +1,35 @@
-import { FormControl, InputLabel, Select, OutlinedInput, Box, Chip, MenuItem, SelectChangeEvent, Checkbox, ListItemText } from '@mui/material'
-import CancelIcon from '@mui/icons-material/Cancel';
-import React, { useMemo } from 'react';
+import { Button, Grid } from '@mui/material'
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import SelectChipsComponent from '@common/select-chips/SelectChipsComponent';
+import { IAnimalFilterComponentProps } from './AnimalFilterComponent.interfaces';
 
-export interface IAnimalFilterProps {
-    label: string,
-    elements: string[],
-    currentValues: string[],
-    handleOnChange: (event: SelectChangeEvent<any>) => any,
-    handleOnDelete: (event: any, value: string) => any,
-}
-export default function AnimalFilterComponent(props: IAnimalFilterProps) {
-    const { label, elements, currentValues, handleOnChange, handleOnDelete } = props;
-    const formattedLabel = useMemo(() => label.replace(' ', '-'), [label]);
+
+export default function AnimalFilterComponent(
+    { breedList, selectedBreedList, subBreedList, selectedSubBreedList, handleOnChangeBreed,
+        handleOnDeleteBreed, handleOnDeleteSubBreed, handleOnChangeSubBreed, applyFilters, resetFilters }
+        : IAnimalFilterComponentProps) {
 
     return (
-        <FormControl sx={{ width: 1 }}>
-            {/* {JSON.stringify(currentValues)} */}
-            <InputLabel id={`label-multiple-chip-${formattedLabel}`}>{label}</InputLabel>
-            <Select
-                labelId={`label-multiple-chip-${formattedLabel}`}
-                id={`multiple-chip-${formattedLabel}`}
-                multiple
-                value={currentValues}
-                label={label}
-                onChange={handleOnChange}
-                renderValue={(selected) => (
-                    <div >
-                        {(selected as string[]).map((value) => (
-                            <Chip
-                                size='small'
-                                key={value}
-                                label={value}
-                                clickable
-                                deleteIcon={
-                                    <CancelIcon
-                                        onMouseDown={(event: any) => event.stopPropagation()}
-                                    />
-                                }
-                                onDelete={(e) => handleOnDelete(e, value)}
-                            />
-                        ))}
-                    </div>
-                )}
+        <Grid container spacing={2} mt={20} alignItems="stretch" >
+            <Grid item xs={12} sm={6} md={6} lg={5}>
+                <SelectChipsComponent {...{
+                    label: 'Breed', handleOnChange: handleOnChangeBreed, handleOnDelete: handleOnDeleteBreed,
+                    elements: breedList, currentValues: selectedBreedList
+                }} />
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={4}>
+                <SelectChipsComponent {...{
+                    label: 'Sub-breed', handleOnChange: handleOnChangeSubBreed, handleOnDelete: handleOnDeleteSubBreed,
+                    elements: subBreedList, currentValues: selectedSubBreedList
+                }} />
+            </Grid>
 
-            >
-                {elements && elements.map((name) => (
-                    <MenuItem key={name} value={name}>
-                        <Checkbox checked={currentValues.includes(name)} />
-                        <ListItemText primary={name} />
-                    </MenuItem>
-                ))}
-            </Select>
-        </FormControl>
+            <Grid item xs={12} sm={6} md={6} lg={2} justifyContent="start" display="flex">
+                <Button size='large' color="secondary" fullWidth variant='contained' onClick={() => applyFilters()}>Apply filters</Button>
+            </Grid>
+            <Grid item xs={12} sm={6} md={6} lg={1} justifyContent="start" display="flex">
+                <Button size='large' color="primary" fullWidth variant='outlined' onClick={() => resetFilters()}><RestartAltIcon /></Button>
+            </Grid>
+        </Grid>
     )
 }

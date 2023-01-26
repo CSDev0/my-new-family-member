@@ -8,11 +8,9 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <StyledEngineProvider injectFirst>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </StyledEngineProvider>
-  </React.StrictMode>,
+  <StyledEngineProvider injectFirst>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StyledEngineProvider>
 )
